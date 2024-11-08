@@ -36,15 +36,15 @@ if not dados_porto.empty:
     # Formatar valores de carga e ano para o padrão brasileiro, sem casas decimais
     dados_anos['carga'] = dados_anos['carga'].map("{:,.0f}".format).str.replace(",", "X").str.replace(".", ",").str.replace("X", ".")
 
-    # Aplicar estilização ao DataFrame
+    # Aplicar estilização ao DataFrame para cor de fundo branco, texto preto e fonte maior
     styled_dados_anos = dados_anos.style.set_properties(**{
-        'background-color': '#add8e6',  # Azul claro
-        'color': 'black',               # Texto preto
-        'width': '200px'                # Largura das colunas
+        'background-color': 'white',  # Fundo branco
+        'color': 'black',             # Texto preto
+        'font-size': '18px'           # Tamanho da fonte maior
     })
 
-    # Exibir DataFrame estilizado
-    st.dataframe(styled_dados_anos)
+    # Exibir DataFrame estilizado, removendo o índice e ajustando a largura
+    st.dataframe(styled_dados_anos, use_container_width=True)
 
     # Calcular e exibir o percentual de aumento/diminuição
     for i in range(1, len(dados_anos)):
@@ -58,4 +58,5 @@ else:
 
 # Adicionar a fonte no final da aplicação
 st.write("Fonte: Estatístico Aquaviário ANTAQ. Dados obtidos em nov/24.")
+
 
