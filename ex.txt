@@ -1,4 +1,0 @@
-
-## Execução
-
-Execute o aplicativo com:
