@@ -1,0 +1,5 @@
+# Renomeia as colunas para garantir que a coluna 'Porto' exista em todas as abas
+dados_2020 = dados_2020.rename(columns={'Nome do Porto': 'Porto'})  # Ajuste conforme necessário
+dados_2021 = dados_2021.rename(columns={'Nome do Porto': 'Porto'})
+dados_2022 = dados_2022.rename(columns={'Nome do Porto': 'Porto'})
+dados_2023 = dados_2023.rename(columns={'Nome do Porto': 'Porto'})

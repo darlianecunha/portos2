@@ -1,0 +1,2 @@
+# Combine os dados em um único DataFrame
+dados = pd.concat([dados_2020, dados_2021, dados_2022, dados_2023])
