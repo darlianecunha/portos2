@@ -1,18 +1,16 @@
 import streamlit as st
 import pandas as pd
 
-# Função para calcular o percentual de aumento ou diminuição
-def calcular_percentual(ano_anterior, ano_atual):
-    return ((ano_atual - ano_anterior) / ano_anterior) * 100 if ano_anterior != 0 else None
+# Caminho do arquivo consolidado
+arquivo_path = "movimentacaoportuaria2020_2023.xlsx"
 
-# Carregar todas as planilhas de anos diferentes em um único DataFrame
-arquivo_path = "data/movimentacao_portuaria_2020_2023.xlsx"
-dados_2020 = pd.read_excel(arquivo_path, sheet_name='2020')
-dados_2021 = pd.read_excel(arquivo_path, sheet_name='2021')
-dados_2022 = pd.read_excel(arquivo_path, sheet_name='2022')
-dados_2023 = pd.read_excel(arquivo_path, sheet_name='2023')
+# Carregar cada ano de forma separada, especificando o engine openpyxl
+dados_2020 = pd.read_excel(arquivo_path, sheet_name='2020', engine='openpyxl')
+dados_2021 = pd.read_excel(arquivo_path, sheet_name='2021', engine='openpyxl')
+dados_2022 = pd.read_excel(arquivo_path, sheet_name='2022', engine='openpyxl')
+dados_2023 = pd.read_excel(arquivo_path, sheet_name='2023', engine='openpyxl')
 
-# Adiciona uma coluna 'Ano' em cada conjunto de dados
+# Adicionar uma coluna 'Ano' em cada conjunto de dados
 dados_2020['Ano'] = 2020
 dados_2021['Ano'] = 2021
 dados_2022['Ano'] = 2022
@@ -20,6 +18,10 @@ dados_2023['Ano'] = 2023
 
 # Combinar os dados em um único DataFrame
 dados = pd.concat([dados_2020, dados_2021, dados_2022, dados_2023])
+
+# Função para calcular o percentual de aumento ou diminuição
+def calcular_percentual(ano_anterior, ano_atual):
+    return ((ano_atual - ano_anterior) / ano_anterior) * 100 if ano_anterior != 0 else None
 
 # Interface do usuário
 st.title("Movimentação Portuária dos Portos Brasileiros (2020-2023)")
@@ -45,4 +47,3 @@ if not dados_porto.empty:
 
 else:
     st.write("Dados não disponíveis para o porto selecionado.")
-
