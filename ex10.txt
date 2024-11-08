@@ -1,0 +1,5 @@
+# Renomeia as colunas para garantir que 'cargamovimentada' exista em todas as abas
+dados_2020 = dados_2020.rename(columns={'Carga Movimentada': 'cargamovimentada'})
+dados_2021 = dados_2021.rename(columns={'Carga Movimentada': 'cargamovimentada'})
+dados_2022 = dados_2022.rename(columns={'Carga Movimentada': 'cargamovimentada'})
+dados_2023 = dados_2023.rename(columns={'Carga Movimentada': 'cargamovimentada'})

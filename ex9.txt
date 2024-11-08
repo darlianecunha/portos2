@@ -1,0 +1,4 @@
+st.write("Colunas em dados_2020:", dados_2020.columns)
+st.write("Colunas em dados_2021:", dados_2021.columns)
+st.write("Colunas em dados_2022:", dados_2022.columns)
+st.write("Colunas em dados_2023:", dados_2023.columns)
