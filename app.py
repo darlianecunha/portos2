@@ -43,13 +43,13 @@ if not dados_porto.empty:
     st.subheader(f"Movimentação para o Porto: {porto_escolhido}")
 
     # Exibir a movimentação de cada ano e calcular variação
-    dados_anos = dados_porto.groupby('Ano')['cargamovimentada'].sum().reset_index()
+    dados_anos = dados_porto.groupby('Ano')['carga'].sum().reset_index()
     st.write(dados_anos)
 
     # Calcular e exibir o percentual de aumento/diminuição
     for i in range(1, len(dados_anos)):
-        ano_anterior = dados_anos.loc[i - 1, 'cargamovimentada']
-        ano_atual = dados_anos.loc[i, 'cargamovimentada']
+        ano_anterior = dados_anos.loc[i - 1, 'carga']
+        ano_atual = dados_anos.loc[i, 'carga']
         percentual = calcular_percentual(ano_anterior, ano_atual)
         st.write(f"Variação de {dados_anos.loc[i-1, 'Ano']} para {dados_anos.loc[i, 'Ano']}: {percentual:.2f}%")
 

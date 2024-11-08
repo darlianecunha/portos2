@@ -1,1 +1,5 @@
-dados_2020 = pd.read_excel(arquivo_path, sheet_name='2020', engine='openpyxl')
+dados_2020 = pd.read_excel(arquivo_path, sheet_name='2020', engine='openpyxl').rename(columns={'Nome do Porto': 'Porto'})
+dados_2021 = pd.read_excel(arquivo_path, sheet_name='2021', engine='openpyxl').rename(columns={'Nome do Porto': 'Porto'})
+dados_2022 = pd.read_excel(arquivo_path, sheet_name='2022', engine='openpyxl').rename(columns={'Nome do Porto': 'Porto'})
+dados_2023 = pd.read_excel(arquivo_path, sheet_name='2023', engine='openpyxl').rename(columns={'Nome do Porto': 'Porto'})
+
