@@ -1,0 +1,1 @@
+dados_2020 = pd.read_excel(arquivo_path, sheet_name='2020', engine='openpyxl')
