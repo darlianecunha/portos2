@@ -1,0 +1,4 @@
+st.write("Colunas disponíveis no conjunto de dados 2020:", dados_2020.columns)
+st.write("Colunas disponíveis no conjunto de dados 2021:", dados_2021.columns)
+st.write("Colunas disponíveis no conjunto de dados 2022:", dados_2022.columns)
+st.write("Colunas disponíveis no conjunto de dados 2023:", dados_2023.columns)
