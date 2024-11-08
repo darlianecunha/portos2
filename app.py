@@ -33,8 +33,8 @@ if not dados_porto.empty:
     # Agrupar por 'Ano' e somar a coluna 'carga'
     dados_anos = dados_porto.groupby('Ano')['carga'].sum().reset_index()
     
-    # Formatar valores de carga e ano para o padrão brasileiro
-    dados_anos['carga'] = dados_anos['carga'].map("{:,.2f}".format).str.replace(",", "X").str.replace(".", ",").str.replace("X", ".")
+    # Formatar valores de carga e ano para o padrão brasileiro, sem casas decimais
+    dados_anos['carga'] = dados_anos['carga'].map("{:,.0f}".format).str.replace(",", "X").str.replace(".", ",").str.replace("X", ".")
     
     st.write(dados_anos)
 
@@ -50,4 +50,3 @@ else:
 
 # Adicionar a fonte no final da aplicação
 st.write("Fonte: Estatístico Aquaviário ANTAQ. Dados obtidos em nov/24.")
-
