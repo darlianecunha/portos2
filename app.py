@@ -11,14 +11,13 @@ dados_2022 = pd.read_excel(arquivo_path, sheet_name='2022', engine='openpyxl').r
 dados_2023 = pd.read_excel(arquivo_path, sheet_name='2023', engine='openpyxl').rename(columns={'Carga Movimentada': 'carga', 'Porto': 'porto'})
 
 # Adicionar uma coluna 'Ano' em cada conjunto de dados
-dados_2020['Ano'] = 2020
-dados_2021['Ano'] = 2021
-dados_2022['Ano'] = 2022
-dados_2023['Ano'] = 2023
+dados_2020['Ano'] = "2020"
+dados_2021['Ano'] = "2021"
+dados_2022['Ano'] = "2022"
+dados_2023['Ano'] = "2023"
 
-# Combine os dados em um único DataFrame e exiba as colunas para diagnóstico
+# Combine os dados em um único DataFrame
 dados = pd.concat([dados_2020, dados_2021, dados_2022, dados_2023])
-st.write("Colunas no DataFrame consolidado:", dados.columns.tolist())
 
 # Interface do usuário
 st.title("Movimentação Portuária dos Portos Brasileiros (2020-2023)")
@@ -33,14 +32,22 @@ if not dados_porto.empty:
 
     # Agrupar por 'Ano' e somar a coluna 'carga'
     dados_anos = dados_porto.groupby('Ano')['carga'].sum().reset_index()
+    
+    # Formatar valores de carga e ano para o padrão brasileiro
+    dados_anos['carga'] = dados_anos['carga'].map("{:,.2f}".format).str.replace(",", "X").str.replace(".", ",").str.replace("X", ".")
+    
     st.write(dados_anos)
 
     # Calcular e exibir o percentual de aumento/diminuição
     for i in range(1, len(dados_anos)):
-        ano_anterior = dados_anos.loc[i - 1, 'carga']
-        ano_atual = dados_anos.loc[i, 'carga']
+        ano_anterior = float(dados_anos.loc[i - 1, 'carga'].replace(".", "").replace(",", "."))
+        ano_atual = float(dados_anos.loc[i, 'carga'].replace(".", "").replace(",", "."))
         percentual = ((ano_atual - ano_anterior) / ano_anterior) * 100 if ano_anterior != 0 else None
         st.write(f"Variação de {dados_anos.loc[i-1, 'Ano']} para {dados_anos.loc[i, 'Ano']}: {percentual:.2f}%")
 
 else:
     st.write("Dados não disponíveis para o porto selecionado.")
+
+# Adicionar a fonte no final da aplicação
+st.write("Fonte: Estatístico Aquaviário ANTAQ. Dados obtidos em nov/24.")
+
