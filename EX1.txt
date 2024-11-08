@@ -1,0 +1,4 @@
+
+## Execução
+
+Para executar o aplicativo, use:
