@@ -21,7 +21,7 @@ dados = pd.concat([dados_2020, dados_2021, dados_2022, dados_2023])
 
 # Título em azul marinho e introdução com nome do desenvolvedor
 st.markdown("<h1 style='color: #002060;'>Movimentação Portuária dos Portos Brasileiros (2020-2023)</h1>", unsafe_allow_html=True)
-st.markdown("<p><strong>Ferramenta desenvolvida por Darliane Cunha.</strong> Facilite suas buscas e visualize dados de movimentação portuária dos principais portos e terminais brasileiros!</p>", unsafe_allow_html=True)
+st.markdown("Facilite suas buscas e visualize dados de movimentação portuária dos principais portos e terminais brasileiros!</p>"<p><strong>Ferramenta desenvolvida por Darliane Cunha.</strong>, unsafe_allow_html=True)
 
 # Interface de seleção de porto
 porto_escolhido = st.selectbox("Selecione o Porto ou Terminal", sorted(dados['porto'].unique()))
