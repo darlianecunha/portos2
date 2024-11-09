@@ -19,9 +19,8 @@ dados_2023['Ano'] = "2023"
 # Combine os dados em um único DataFrame
 dados = pd.concat([dados_2020, dados_2021, dados_2022, dados_2023])
 
-# Título em azul marinho e introdução com nome do desenvolvedor
+# Título em azul marinho
 st.markdown("<h1 style='color: #002060;'>Movimentação Portuária dos Portos Brasileiros (2020-2023)</h1>", unsafe_allow_html=True)
-st.markdown("Facilite suas buscas e visualize dados de movimentação portuária dos principais portos e terminais brasileiros!</p>"<p><strong>Ferramenta desenvolvida por Darliane Cunha.</strong>, unsafe_allow_html=True)
 
 # Interface de seleção de porto
 porto_escolhido = st.selectbox("Selecione o Porto ou Terminal", sorted(dados['porto'].unique()))
@@ -59,9 +58,6 @@ if not dados_porto.empty:
 else:
     st.write("Dados não disponíveis para o porto selecionado.")
 
-# Adicionar a fonte no final da aplicação
+# Adicionar a fonte e o crédito ao final da aplicação
 st.write("Fonte: Estatístico Aquaviário ANTAQ. Dados obtidos em nov/24.")
-
-
-
-
+st.markdown("<p><strong>Ferramenta desenvolvida por Darliane Cunha.</strong></p>", unsafe_allow_html=True)
